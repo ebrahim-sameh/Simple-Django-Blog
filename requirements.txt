@@ -223,3 +223,5 @@ websockets==10.2
 wrapt==1.13.3
 yarl==1.7.2
 zopfli==0.2.1
+django_heroku==0.3.1
+whitenoise==6.2.0
