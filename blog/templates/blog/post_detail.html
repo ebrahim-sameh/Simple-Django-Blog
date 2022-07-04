@@ -1,0 +1,34 @@
+{% extends "blog/base.html"%}
+{% block content %}
+<!--        <h1>{{post.title}}</h1>-->
+<!--        <p>By {{post.author}} on {{post.date_posted}}</p>-->
+<!--        <p>{{post.content}}</p>-->
+
+  <article class="border-bottom mb-4">
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+                            <h1 class="fw-bolder mb-1">{{object.title}}</h1>
+                            <!-- Post meta content-->
+   <div class="text-muted fst-italic mb-2">
+                           Posted on {{object.date_posted|date:"F d, Y"}} by  <a href="{% url 'user-posts' object.author.username %}"> {{object.author}}</a>
+                            </div>                            <!-- Post categories-->
+                            {% if object.author == user %}
+                            <div class="border-bottom mb-2">
+                            <a class="badge bg-secondary text-decoration-none link-light mb-2" href="{% url 'post-update' object.id %}" >Edit post</a>
+                            <a class="badge bg-danger text-decoration-none link-light mb-2 " href="{% url 'post-delete' object.id %}">Delete post</a>
+                                </div>
+                            {% endif %}
+                        </header>
+                        <!-- Preview image figure-->
+<!--                        <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>-->
+                        <!-- Post content-->
+                        <section class="mb-5">
+                         {{object.content}}
+                        </section>
+                    </article>
+
+
+
+{%endblock content%}
